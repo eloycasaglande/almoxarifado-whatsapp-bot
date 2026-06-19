@@ -50,6 +50,21 @@ client.on('disconnected', (reason) => {
   console.warn('   Reinicie o sistema.\n');
 });
 
+// ─── Fila de impressão ───────────────────────────────────────────────────────
+// Garante que apenas UM pedido é impresso por vez. Se dois pedidos chegarem
+// quase juntos, o segundo só começa depois que o primeiro terminar — assim
+// nunca há duas tentativas simultâneas de abrir a impressora USB (o que poderia
+// travar a comunicação). NÃO altera o printer.js, apenas organiza a ordem.
+let filaImpressao = Promise.resolve();
+
+function enfileirarImpressao(pedido) {
+  // O .catch antes do .then evita que a falha de um pedido bloqueie os próximos.
+  filaImpressao = filaImpressao
+    .catch(() => {})
+    .then(() => imprimirPedido(pedido));
+  return filaImpressao;
+}
+
 // ─── Processar mensagens ─────────────────────────────────────────────────────
 client.on('message', async (msg) => {
   try {
@@ -87,8 +102,8 @@ client.on('message', async (msg) => {
     const horario = new Date(msg.timestamp * 1000)
       .toLocaleString('pt-BR', { dateStyle: 'short', timeStyle: 'short' });
 
-    // Imprime
-    await imprimirPedido({ ...pedido, horario });
+    // Imprime (passando pela fila — um pedido por vez)
+    await enfileirarImpressao({ ...pedido, horario });
 
 
   } catch (err) {
