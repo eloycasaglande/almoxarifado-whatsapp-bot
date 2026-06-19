@@ -1,0 +1,16 @@
+# Dependencias
+node_modules/
+
+# Sessao e cache do WhatsApp (NUNCA versionar - contem acesso ao seu WhatsApp)
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Configuracao local (use o .env.example como modelo)
+.env
+
+# Executavel gerado
+dist/
+
+# Logs e temporarios
+*.log
+npm-debug.log*

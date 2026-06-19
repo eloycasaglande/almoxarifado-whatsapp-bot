@@ -1,0 +1,26 @@
+COMO USAR O INICIADOR DO BOT
+============================
+
+1) Copie o arquivo "INICIAR-BOT.bat" para a pasta do bot
+   no computador do almoxarifado (C:\almoxarifado-bot).
+
+2) Pronto. Basta dar dois cliques no INICIAR-BOT.bat que o bot inicia.
+   Nao precisa mais abrir o cmd nem digitar nada.
+
+   - Se o bot cair (queda de internet, erro), ele reinicia sozinho em 5 segundos.
+   - Para parar o bot, e so fechar a janela.
+
+OPCIONAL: INICIAR JUNTO COM O WINDOWS (sem nem clicar)
+------------------------------------------------------
+1) No computador do almoxarifado, aperte Windows + R
+2) Digite:  shell:startup  e aperte Enter
+3) Na janela que abrir, cole um ATALHO do INICIAR-BOT.bat
+   (clique com o botao direito no INICIAR-BOT.bat > Enviar para > Area de trabalho,
+    depois arraste esse atalho para a pasta que abriu)
+4) Agora, sempre que ligarem o computador, o bot inicia sozinho.
+
+DICA: crie tambem um atalho na Area de Trabalho para o almoxarife
+achar facil.
+
+OBS: o arquivo "Tabs_..." que deu erro ao copiar a pasta e so cache
+da sessao do WhatsApp (.wwebjs_auth). Pode ignorar - nao afeta nada.
